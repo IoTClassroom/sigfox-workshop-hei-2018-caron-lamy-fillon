@@ -21,8 +21,8 @@
 */
 
 
-// the setup function runs once when you press reset or power the board
-void setup() {
+/* the setup function runs once when you press reset or power the board */
+/*void setup() {
   // initialize digital pin LED_BUILTIN as an output.
   pinMode(LED_BUILTIN, OUTPUT);
 }
@@ -33,4 +33,31 @@ void loop() {
   delay(1000);                       // wait for a second
   digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
   delay(1000);                       // wait for a second
+}*/
+/*
+ * Author: Louis Moreau: https://github.com/luisomoreau
+ * Date: 2017/03/03
+ * Description:
+ * Read analog values from a sensor and display it on a console
+*/
+
+// the setup function runs once when you press reset or power the board
+void setup() {
+   Serial.begin(9600);
+}
+
+// the loop function runs over and over again forever
+void loop() {
+
+  int sensorValue = analogRead(A0);
+  Serial.print("light: ");
+  Serial.println(sensorValue);
+
+  float percentage = map(sensorValue, 0, 1023, 0, 100);
+
+  Serial.print("light percentage: ");
+  Serial.print(percentage);
+  Serial.println(" % ");
+
+  delay(1000);
 }
